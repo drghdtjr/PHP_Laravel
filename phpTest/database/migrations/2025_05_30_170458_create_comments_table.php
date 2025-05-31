@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained() ->onDelete('cascade'); // user테이블의 id를 찾아서 외래키 걸어줌
+            $table->foreignId('post_id')->constrained() ->onDelete('cascade');
             $table->timestamps();
         });
     }
